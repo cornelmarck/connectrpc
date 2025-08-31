@@ -3,7 +3,10 @@
 Based on:
 https://connectrpc.com/docs/go/getting-started/
 
-Invoke the server:
+Start the server:
+`make run`
+
+Invoke the Unary endpoint:
 
 HTTP/1:
 ```
