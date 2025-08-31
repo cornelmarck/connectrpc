@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"connectrpc.com/connect"
-	v1connect "github.com/cornelmarck/connectrpc/gen/proto/v1/v1connect"
+	v1connect "github.com/cornelmarck/connectrpc/gen/go/proto/v1/v1connect"
 	v1server "github.com/cornelmarck/connectrpc/server"
 
 	"golang.org/x/net/http2"

@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"connectrpc.com/connect"
-	v1 "github.com/cornelmarck/connectrpc/gen/proto/v1"
-	v1service "github.com/cornelmarck/connectrpc/gen/proto/v1/v1connect"
+	v1 "github.com/cornelmarck/connectrpc/gen/go/proto/v1"
+	v1service "github.com/cornelmarck/connectrpc/gen/go/proto/v1/v1connect"
 )
 
 type TestErrorServer struct {

@@ -9,7 +9,8 @@ TOOLS = \
 	github.com/bufbuild/buf/cmd/buf@v1.57.0 \
 	google.golang.org/protobuf/cmd/protoc-gen-go@v1.36.8 \
 	google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.5.1 \
-	connectrpc.com/connect/cmd/protoc-gen-connect-go@v1.18.1
+	connectrpc.com/connect/cmd/protoc-gen-connect-go@v1.18.1 \
+	github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2@v2.27.2
 
 # Docker / GAR variables
 PROJECT_ID := homelab-464022

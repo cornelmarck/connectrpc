@@ -402,7 +402,7 @@ const file_proto_v1_service_proto_rawDesc = "" +
 	"\tEchoUnary\x12\x1a.proto.v1.EchoUnaryRequest\x1a\x1b.proto.v1.EchoUnaryResponse\x12[\n" +
 	"\x10EchoServerStream\x12!.proto.v1.EchoServerStreamRequest\x1a\".proto.v1.EchoServerStreamResponse0\x01\x12[\n" +
 	"\x10EchoClientStream\x12!.proto.v1.EchoClientStreamRequest\x1a\".proto.v1.EchoClientStreamResponse(\x01\x12`\n" +
-	"\x11EchoBidirectional\x12\".proto.v1.EchoBidirectionalRequest\x1a#.proto.v1.EchoBidirectionalResponse(\x010\x01B3Z1github.com/cornelmarck/connectrpc/gen/proto/v1;v1b\x06proto3"
+	"\x11EchoBidirectional\x12\".proto.v1.EchoBidirectionalRequest\x1a#.proto.v1.EchoBidirectionalResponse(\x010\x01B6Z4github.com/cornelmarck/connectrpc/gen/go/proto/v1;v1b\x06proto3"
 
 var (
 	file_proto_v1_service_proto_rawDescOnce sync.Once
