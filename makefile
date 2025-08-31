@@ -11,6 +11,18 @@ TOOLS = \
 	google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.5.1 \
 	connectrpc.com/connect/cmd/protoc-gen-connect-go@v1.18.1
 
+# Docker / GAR variables
+PROJECT_ID := homelab-464022
+REGION := us-east1
+REPO := homelab-repo
+IMAGE_NAME := connectserver
+TAG := latest
+FULL_IMAGE := $(REGION)-docker.pkg.dev/$(PROJECT_ID)/$(REPO)/$(IMAGE_NAME):$(TAG)
+
+# -------------------------------
+# Go / Proto targets
+# -------------------------------
+
 .PHONY: tools
 tools:
 	@for pkg in $(TOOLS); do \
@@ -36,3 +48,33 @@ proto-compile: tools proto-lint
 lint:
 	@go fmt ./...
 	@go vet ./...
+
+.PHONY: build
+build:
+	@go build -o bin/connectserver ./cmd/connectserver
+
+.PHONY: run
+run: build
+	@./bin/connectserver
+
+# -------------------------------
+# Docker / GAR targets
+# -------------------------------
+
+.PHONY: docker-build
+docker-build: build
+	@docker build -t $(IMAGE_NAME) .
+
+.PHONY: docker-tag
+docker-tag: docker-build
+	@docker tag $(IMAGE_NAME) $(FULL_IMAGE)
+
+.PHONY: docker-push
+docker-push: docker-tag
+	@echo "Pushing $(FULL_IMAGE) to Artifact Registry..."
+	@docker push $(FULL_IMAGE)
+
+# Shortcut: build, tag, push in one step
+.PHONY: deploy
+deploy: docker-push
+	@echo "Deployment complete: $(FULL_IMAGE)"
