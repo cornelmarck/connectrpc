@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package proto.v1;
+
+option go_package = "github.com/cornelmarck/connectrpc/gen/proto/v1;v1";
+
+service EchoService {
+  // Unary
+  rpc EchoUnary(EchoUnaryRequest) returns (EchoUnaryResponse);
+
+  // Server streaming
+  rpc EchoServerStream(EchoServerStreamRequest) returns (stream EchoServerStreamResponse);
+
+  // Client streaming
+  rpc EchoClientStream(stream EchoClientStreamRequest) returns (EchoClientStreamResponse);
+
+  // Bidirectional streaming
+  rpc EchoBidirectional(stream EchoBidirectionalRequest) returns (stream EchoBidirectionalResponse);
+}
+
+// Unary
+message EchoUnaryRequest {
+  string message = 1;
+}
+
+message EchoUnaryResponse {
+  string message = 1;
+}
+
+// Server streaming
+message EchoServerStreamRequest {
+  string message = 1;
+}
+
+message EchoServerStreamResponse {
+  string message = 1;
+}
+
+// Client streaming
+message EchoClientStreamRequest {
+  string message = 1;
+}
+
+message EchoClientStreamResponse {
+  string message = 1;
+}
+
+// Bidirectional streaming
+message EchoBidirectionalRequest {
+  string message = 1;
+}
+
+message EchoBidirectionalResponse {
+  string message = 1;
+}
