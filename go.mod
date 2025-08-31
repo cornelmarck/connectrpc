@@ -6,6 +6,9 @@ require google.golang.org/protobuf v1.36.8
 
 require (
 	connectrpc.com/connect v1.18.1 // indirect
+	github.com/go-logr/logr v1.4.3 // indirect
+	github.com/google/uuid v1.6.0 // indirect
+	github.com/veqryn/slog-context v0.8.0 // indirect
 	golang.org/x/net v0.41.0 // indirect
 	golang.org/x/sys v0.33.0 // indirect
 	golang.org/x/text v0.26.0 // indirect

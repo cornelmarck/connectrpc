@@ -5,14 +5,21 @@ BIN_DIR := $(CURDIR)/bin
 export GOBIN := $(BIN_DIR)
 export PATH := $(BIN_DIR):$(PATH)
 
+TOOLS = \
+	github.com/bufbuild/buf/cmd/buf@v1.57.0 \
+	google.golang.org/protobuf/cmd/protoc-gen-go@v1.36.8 \
+	google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.5.1 \
+	connectrpc.com/connect/cmd/protoc-gen-connect-go@v1.18.1
+
 .PHONY: tools
 tools:
-	@echo "Installing tools..."
-	@go install github.com/bufbuild/buf/cmd/buf@latest
-	@go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest
-	@go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-	@go install connectrpc.com/connect/cmd/protoc-gen-connect-go@latest
-	@go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+	@for pkg in $(TOOLS); do \
+		name=$$(basename $${pkg%@*}); \
+		if [ ! -x "$(BIN_DIR)/$$name" ]; then \
+			echo "Installing $$name"; \
+			go install $$pkg >/dev/null; \
+		fi; \
+	done
 
 .PHONY: proto-lint
 proto-lint: tools
